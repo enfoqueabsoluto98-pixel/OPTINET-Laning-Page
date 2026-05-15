@@ -2807,12 +2807,8 @@
         video.play().catch(() => { if (noBg) noBg.classList.add('active'); });
         function mobileDraw() { drawFrame(); requestAnimationFrame(mobileDraw); }
         video.addEventListener('play', mobileDraw);
-        // Palabras en mobile: animación CSS cíclica automática
-        wordEls.forEach((el, i) => {
-          el.style.animation = `wordFadeLoop 4s ease-in-out ${i * 0.5}s infinite`;
-          el.style.opacity   = '1';
-          el.style.transform = 'translateY(0)';
-        });
+        // Palabras en mobile: ocultar completamente por seguridad
+        if (wordsLayer) wordsLayer.style.display = 'none';
         return;
       }
 
