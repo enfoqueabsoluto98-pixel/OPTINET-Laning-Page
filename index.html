@@ -43,6 +43,23 @@
     }
 
     /* ══════════════════════════════════════════════
+       SECCIÓN PLACEHOLDER — se eliminará sección a sección
+       ══════════════════════════════════════════════ */
+    .section-placeholder {
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed rgba(108, 79, 240, 0.35);
+      margin: 4px 0;
+      font-family: var(--font-accent);
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: rgba(108, 79, 240, 0.6);
+      background: rgba(108, 79, 240, 0.03);
+    }
+
+    /* ══════════════════════════════════════════════
        S1 · NAVBAR
        ══════════════════════════════════════════════ */
 
@@ -55,17 +72,21 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease, height 0.3s ease;
+      transition: background 0.4s ease, backdrop-filter 0.4s ease,
+                  box-shadow 0.4s ease, padding 0.3s ease;
     }
 
+    /* Glassmorphism activo al hacer scroll */
     #navbar.scrolled {
       background: rgba(10, 10, 20, 0.72);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 1px 0 rgba(108, 79, 240, 0.25);
+      box-shadow: 0 1px 0 rgba(108, 79, 240, 0.25),
+                  0 4px 30px rgba(0, 0, 0, 0.5);
       height: 64px;
     }
 
+    /* ── Logo ─────────────────────────────────────── */
     .nav-logo {
       display: flex;
       align-items: center;
@@ -74,464 +95,2878 @@
       flex-shrink: 0;
     }
 
-    .nav-logo-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; }
-    .nav-logo-divider { width: 1px; height: 36px; background: linear-gradient(180deg, transparent, var(--color-purple), transparent); opacity: 0.7; }
-    .nav-logo-text { font-family: var(--font-title); font-size: 32px; font-weight: 700; letter-spacing: 0.12em; color: var(--color-white); line-height: 1; }
-    .nav-logo-text span { background: linear-gradient(90deg, var(--color-purple), var(--color-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-logo-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
 
-    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-    .nav-links a { font-family: var(--font-accent); font-size: 14px; font-weight: 500; letter-spacing: 0.06em; color: rgba(255, 255, 255, 0.75); text-decoration: none; position: relative; transition: color 0.25s ease; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--color-purple), var(--color-cyan)); transition: width 0.3s ease; }
+    .nav-logo-divider {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(180deg, transparent, var(--color-purple), transparent);
+      opacity: 0.7;
+    }
+
+    .nav-logo-text {
+      font-family: var(--font-title);
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--color-white);
+      line-height: 1;
+    }
+
+    .nav-logo-text span {
+      background: linear-gradient(90deg, var(--color-purple), var(--color-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Nav Links ────────────────────────────────── */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-accent);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, var(--color-purple), var(--color-cyan));
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
     .nav-links a:hover { color: var(--color-white); }
     .nav-links a:hover::after { width: 100%; }
 
-    .nav-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--color-wa); color: #fff; font-family: var(--font-accent); font-size: 13px; font-weight: 700; border-radius: 50px; text-decoration: none; transition: transform 0.25s ease, box-shadow 0.25s ease; }
-    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+    /* ── CTA WhatsApp ─────────────────────────────── */
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--color-wa);
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 50px;
+      white-space: nowrap;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.30);
+    }
 
-    .nav-hamburger { display: none; flex-direction: column; gap: 5px; width: 36px; background: none; border: none; cursor: pointer; z-index: 1001; }
-    .nav-hamburger span { display: block; height: 2px; background: var(--color-white); transition: 0.3s; }
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.50);
+      background: #20c05a;
+    }
+
+    .nav-cta svg { flex-shrink: 0; }
+
+    /* ── Hamburger (mobile) ───────────────────────── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 1001;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--color-white);
+      transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+    }
+
+    .nav-hamburger span:nth-child(2) { width: 70%; }
+
     .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    .nav-mobile-menu { position: fixed; inset: 0; background: rgba(10, 10, 20, 0.98); backdrop-filter: blur(20px); z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px; opacity: 0; pointer-events: none; transition: 0.4s; }
-    .nav-mobile-menu.open { opacity: 1; pointer-events: all; }
-    .nav-mobile-menu .nav-links { flex-direction: column; gap: 28px; }
-    .nav-mobile-menu .nav-links a { font-size: 32px; font-family: var(--font-title); }
+    /* ── Mobile Menu Drawer ───────────────────────── */
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10, 10, 20, 0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
 
+    .nav-mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .nav-mobile-menu .nav-links {
+      flex-direction: column;
+      gap: 28px;
+      text-align: center;
+    }
+
+    .nav-mobile-menu .nav-links a {
+      font-size: 28px;
+      font-family: var(--font-title);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--color-white);
+    }
+
+    .nav-mobile-menu .nav-cta {
+      padding: 14px 36px;
+      font-size: 16px;
+    }
+
+    /* ── Responsive ───────────────────────────────── */
     @media (max-width: 768px) {
-      .nav-links-desktop, .nav-cta-desktop { display: none; }
-      .nav-hamburger { display: flex; }
-      .nav-logo-text { font-size: 24px; }
-      .nav-logo-icon { width: 38px; height: 38px; }
+      .nav-links-desktop { display: none; }
+      .nav-cta-desktop   { display: none; }
+      .nav-hamburger     { display: flex; }
+      .nav-logo-icon     { width: 38px; height: 38px; }
+      .nav-logo-text     { font-size: 24px; }
+      .nav-logo-divider  { height: 28px; }
     }
 
     /* ══════════════════════════════════════════════
-       S2 · HERO
+       S2 · HERO — SCROLL-DRIVEN VIDEO
        ══════════════════════════════════════════════ */
 
-    .scroll-video-hero { height: 500vh; position: relative; }
-    .scroll-video-sticky { position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden; background: #0A0A14; }
-
-    #heroCanvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; }
-    .hero-bg-particles { position: absolute; inset: 0; z-index: 1; }
-    .particle { position: absolute; border-radius: 50%; opacity: 0; animation: particleDrift linear infinite; }
-    @keyframes particleDrift {
-      0% { transform: translateY(0); opacity: 0; }
-      20% { opacity: 0.6; }
-      80% { opacity: 0.4; }
-      100% { transform: translateY(-100vh); opacity: 0; }
+    /* ── Contenedor scroll: 500vh para dar recorrido al video ── */
+    .scroll-video-hero {
+      height: 500vh;
+      position: relative;
     }
 
-    .cable-words-layer { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
-    .cable-word { position: absolute; font-family: var(--font-title); font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0; transform: translateY(10px); transition: 0.4s; white-space: nowrap; }
-    .cable-word.visible { opacity: 1; transform: translateY(0); }
+    /* ── Sticky stage que se queda fija en viewport ── */
+    .scroll-video-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      background: #0A0A14;
+    }
 
-    .hero-content { position: absolute; inset: 0; z-index: 4; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 20px; pointer-events: none; }
+    /* ── Partículas CSS — fondo tecnológico ── */
+    .hero-bg-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .hero-bg-particles::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(108,79,240,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(0,229,255,0.10) 0%, transparent 60%);
+    }
+
+    /* Partículas individuales generadas con pseudo + nth-child por JS */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--color-cyan);
+      opacity: 0;
+      animation: particleDrift linear infinite;
+    }
+
+    @keyframes particleDrift {
+      0%   { transform: translateY(0) scale(1);   opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-120vh) scale(0.4); opacity: 0; }
+    }
+
+    /* ── Canvas del video (chroma key) ── */
+    #heroCanvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 2;
+    }
+
+    /* ── Capa de palabras flotantes ── */
+    .cable-words-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .cable-words-layer { display: none; }
+    }
+
+    .cable-word {
+      position: absolute;
+      font-family: var(--font-title);
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .cable-word.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Contenido del Hero (sobre el canvas) ── */
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      pointer-events: none;
+    }
+
     .hero-content > * { pointer-events: all; }
 
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; background: rgba(108, 79, 240, 0.15); border: 1px solid rgba(108, 79, 240, 0.5); border-radius: 50px; font-family: var(--font-accent); font-size: 13px; font-weight: 700; color: var(--color-cyan); margin-bottom: 28px; animation: pulseBadge 2.5s infinite; }
-    @keyframes pulseBadge { 0%, 100% { box-shadow: 0 0 0 0 rgba(108,79,240,0); } 50% { box-shadow: 0 0 20px 5px rgba(108,79,240,0.2); } }
+    /* Badge precio pulsante */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      background: rgba(108, 79, 240, 0.15);
+      border: 1px solid rgba(108, 79, 240, 0.5);
+      border-radius: 50px;
+      font-family: var(--font-accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--color-cyan);
+      margin-bottom: 28px;
+      animation: pulseBadge 2.5s ease-in-out infinite;
+      backdrop-filter: blur(8px);
+    }
 
-    .hero-headline { font-family: var(--font-title); font-size: clamp(48px, 10vw, 110px); font-weight: 700; line-height: 0.95; margin-bottom: 20px; background: linear-gradient(135deg, #fff 30%, var(--color-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-headline span.line2 { background: linear-gradient(90deg, var(--color-purple), var(--color-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    @keyframes pulseBadge {
+      0%, 100% { box-shadow: 0 0 0   0 rgba(108,79,240,0.3); }
+      50%       { box-shadow: 0 0 20px 6px rgba(108,79,240,0.2); }
+    }
 
-    .hero-subtitle { font-size: clamp(16px, 2.5vw, 22px); color: rgba(255,255,255,0.7); margin-bottom: 40px; max-width: 520px; line-height: 1.6; }
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    /* Headline */
+    .hero-headline {
+      font-family: var(--font-title);
+      font-size: clamp(52px, 9vw, 110px);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 30%, var(--color-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-    .btn-primary { padding: 14px 32px; background: linear-gradient(135deg, var(--color-purple), var(--color-blue)); color: #fff; font-family: var(--font-accent); font-weight: 700; border-radius: 50px; text-decoration: none; transition: 0.3s; box-shadow: 0 4px 20px rgba(108,79,240,0.4); }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(108,79,240,0.6); }
+    .hero-headline .line2 {
+      background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-    .btn-wa { padding: 14px 32px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-family: var(--font-accent); font-weight: 600; border-radius: 50px; text-decoration: none; transition: 0.3s; backdrop-filter: blur(10px); }
-    .btn-wa:hover { background: rgba(37,211,102,0.15); border-color: var(--color-wa); transform: translateY(-3px); }
+    /* Subtítulo */
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(17px, 2.2vw, 22px);
+      font-weight: 400;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 40px;
+      max-width: 520px;
+      line-height: 1.6;
+    }
 
-    .scroll-progress-bar { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.1); }
-    .scroll-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--color-purple), var(--color-cyan)); }
+    /* CTAs */
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--color-purple), var(--color-blue));
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 24px rgba(108,79,240,0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(108,79,240,0.6);
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 50px;
+      backdrop-filter: blur(8px);
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .btn-wa:hover {
+      transform: translateY(-3px);
+      background: rgba(37,211,102,0.15);
+      border-color: var(--color-wa);
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.6;
+      animation: bounceArrow 2s ease-in-out infinite;
+    }
+
+    .scroll-indicator span {
+      font-family: var(--font-accent);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--color-cyan);
+      text-transform: uppercase;
+    }
+
+    @keyframes bounceArrow {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* Barra de progreso del scroll */
+    .scroll-progress-bar {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 3px;
+      z-index: 6;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .scroll-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--color-purple), var(--color-cyan));
+      transition: width 0.05s linear;
+    }
+
+    /* ── Fallback sin video: overlay gradient ── */
+    .hero-no-video-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 40%, rgba(108,79,240,0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(0,229,255,0.12) 0%, transparent 60%);
+      display: none;
+    }
+
+    .hero-no-video-bg.active { display: block; }
+
+    /* ══════════════════════════════════════════════
+       S3 · STATS — CONTADORES ANIMADOS
+       ══════════════════════════════════════════════ */
+
+    #stats {
+      position: relative;
+      padding: 100px clamp(20px, 6vw, 80px);
+      background: linear-gradient(135deg, #0f0824 0%, #0a0a14 40%, #041020 100%);
+      overflow: hidden;
+    }
+
+    #stats::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-top:    1px solid rgba(108, 79, 240, 0.3);
+      border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+      pointer-events: none;
+      animation: statsBorderPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes statsBorderPulse {
+      0%, 100% { border-top-color: rgba(108,79,240,0.3); border-bottom-color: rgba(0,229,255,0.2); }
+      50%       { border-top-color: rgba(108,79,240,0.7); border-bottom-color: rgba(0,229,255,0.5); }
+    }
+
+    #stats::after {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,79,240,0.08) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .stats-header {
+      text-align: center;
+      margin-bottom: 64px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stats-header .section-label {
+      display: inline-block;
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--color-cyan);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      padding: 5px 16px;
+      border: 1px solid rgba(0,229,255,0.3);
+      border-radius: 50px;
+    }
+
+    .stats-header h2 {
+      font-family: var(--font-title);
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      background: linear-gradient(135deg, #fff 40%, var(--color-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 32px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .stat-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease,
+                  box-shadow 0.35s ease;
+    }
+
+    .stat-card.revealed:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(108,79,240,0.22);
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; left: 50%;
+      transform: translateX(-50%);
+      width: 140px; height: 80px;
+      background: radial-gradient(ellipse, rgba(108,79,240,0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .stat-icon {
+      font-size: 42px;
+      margin-bottom: 20px;
+      line-height: 1;
+      filter: drop-shadow(0 0 14px rgba(0,229,255,0.4));
+    }
+
+    .stat-number {
+      font-family: var(--font-title);
+      font-size: clamp(60px, 8vw, 90px);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff, var(--color-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-number.purple {
+      background: linear-gradient(135deg, var(--color-purple), var(--color-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.04em;
+      line-height: 1.7;
+    }
 
     @media (max-width: 768px) {
-      .scroll-video-hero { height: 100vh; }
+      #stats { padding: 72px 20px; }
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .stat-card { padding: 36px 24px; }
+      .stat-number { font-size: clamp(52px, 16vw, 72px); }
+    }
+
+    /* ── Responsive mobile ── */
+    @media (max-width: 768px) {
+      .scroll-video-hero  { height: 100vh; }
       .scroll-video-sticky { position: relative; }
-      .cable-words-layer { display: none; }
-      .hero-headline { font-size: clamp(42px, 12vw, 64px); }
-      .hero-subtitle { font-size: 16px; max-width: 320px; }
-      .hero-ctas { flex-direction: column; width: 100%; max-width: 280px; }
-      .btn-primary, .btn-wa { width: 100%; text-align: center; }
+      .hero-headline { font-size: clamp(38px, 10vw, 56px); letter-spacing: -0.02em; }
+      .hero-subtitle { font-size: 16px; max-width: 300px; margin-top: -10px; }
+      .hero-badge    { font-size: 10px; padding: 6px 14px; margin-bottom: 20px; }
+      .btn-primary, .btn-wa { padding: 12px 22px; font-size: 13px; }
+      .hero-ctas { gap: 10px; }
     }
 
     /* ══════════════════════════════════════════════
-       S3 · STATS
+       SHARED — Reveal + Section Header + Gradient text
        ══════════════════════════════════════════════ */
 
-    #stats { padding: 100px 20px; background: #0A0A14; position: relative; }
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
-    .stat-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 48px 32px; border-radius: 24px; text-align: center; opacity: 0; transform: translateY(30px); transition: 0.6s; }
-    .stat-card.revealed { opacity: 1; transform: translateY(0); }
-    .stat-number { font-family: var(--font-title); font-size: 80px; font-weight: 700; background: linear-gradient(135deg, #fff, var(--color-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 12px; }
-    .stat-label { color: rgba(255,255,255,0.5); font-size: 14px; letter-spacing: 0.05em; }
+    /* Reveal genérico — activado por IntersectionObserver */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    @media (max-width: 768px) {
-      .stats-grid { grid-template-columns: 1fr; }
-      .stat-number { font-size: 64px; }
+    /* Encabezado de sección reutilizable */
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--color-cyan);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      padding: 5px 16px;
+      border: 1px solid rgba(0,229,255,0.3);
+      border-radius: 50px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-title);
+      font-size: clamp(30px, 5vw, 54px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--color-white);
+      margin-bottom: 16px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--color-purple), var(--color-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-desc {
+      font-family: var(--font-body);
+      font-size: 17px;
+      color: rgba(255,255,255,0.5);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.7;
     }
 
     /* ══════════════════════════════════════════════
-       S4 · AUDIENCIAS (TARJETAS)
+       S4 · AUDIENCIAS
        ══════════════════════════════════════════════ */
 
-    #audiencias { padding: 100px 20px; background: #0A0A14; }
-    .section-header { text-align: center; margin-bottom: 60px; }
-    .section-label { font-family: var(--font-accent); font-size: 12px; font-weight: 700; color: var(--color-cyan); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 15px; display: block; }
-    .section-title { font-family: var(--font-title); font-size: clamp(32px, 5vw, 54px); font-weight: 700; margin-bottom: 20px; line-height: 1.1; }
-    .gradient-text { background: linear-gradient(90deg, var(--color-purple), var(--color-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #para-quien {
+      padding: 100px clamp(20px, 6vw, 80px);
+      background: var(--color-bg);
+      position: relative;
+    }
 
-    .audiencias-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-    .audiencia-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 40px 30px; border-radius: 24px; transition: 0.3s; }
-    .audiencia-card:hover { transform: translateY(-10px); border-color: var(--color-purple); background: rgba(108, 79, 240, 0.05); }
-    .audiencia-icon { font-size: 48px; margin-bottom: 25px; display: block; }
-    .audiencia-title { font-family: var(--font-title); font-size: 22px; margin-bottom: 15px; }
-    .audiencia-desc { color: rgba(255,255,255,0.5); font-size: 15px; line-height: 1.6; }
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .audience-card {
+      position: relative;
+      padding: 36px 28px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: default;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .audience-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(108,79,240,0.4);
+    }
+
+    .audience-card:hover .audience-glow {
+      opacity: 1;
+    }
+
+    /* Glow morado en hover */
+    .audience-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(108,79,240,0.18) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .audience-icon {
+      width: 52px;
+      height: 52px;
+      margin-bottom: 20px;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .audience-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .audience-title {
+      font-family: var(--font-title);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--color-white);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .audience-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+    }
+
+    @media (max-width: 1024px) {
+      .audience-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .audience-grid { grid-template-columns: 1fr; }
+      #para-quien { padding: 72px 20px; }
+    }
+
+    /* ══════════════════════════════════════════════
+       S5 · VENTAJAS — POR QUÉ OPTINET
+       ══════════════════════════════════════════════ */
+
+    #ventajas {
+      padding: 100px clamp(20px, 6vw, 80px);
+      background: linear-gradient(180deg, #0a0a14 0%, #0d0820 50%, #0a0a14 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Línea decorativa de fibra óptica en el fondo */
+    #ventajas::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, rgba(108,79,240,0.2), rgba(0,229,255,0.15), transparent);
+      pointer-events: none;
+    }
+
+    .ventajas-list {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    /* Fila alternada: texto | visual */
+    .ventaja-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .ventaja-row.reverse .ventaja-visual { order: -1; }
+
+    /* Panel visual (izquierda o derecha) */
+    .ventaja-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .ventaja-icon-wrap {
+      width: 180px;
+      height: 180px;
+      border-radius: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: rgba(108,79,240,0.07);
+      border: 1px solid rgba(108,79,240,0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .ventaja-row:hover .ventaja-icon-wrap {
+      transform: scale(1.06);
+      box-shadow: 0 0 60px rgba(108,79,240,0.25), 0 0 120px rgba(0,229,255,0.08);
+    }
+
+    /* Anillo exterior pulsante */
+    .ventaja-icon-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -16px;
+      border-radius: 48px;
+      border: 1px solid rgba(108,79,240,0.15);
+      animation: ventajaRingPulse 3s ease-in-out infinite;
+    }
+
+    .ventaja-icon-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -32px;
+      border-radius: 60px;
+      border: 1px solid rgba(0,229,255,0.07);
+      animation: ventajaRingPulse 3s ease-in-out 1s infinite;
+    }
+
+    @keyframes ventajaRingPulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50%       { opacity: 1;   transform: scale(1.04); }
+    }
+
+    .ventaja-emoji {
+      font-size: 72px;
+      line-height: 1;
+      filter: drop-shadow(0 0 20px rgba(0,229,255,0.5));
+    }
+
+    /* Contenido textual */
+    .ventaja-content {}
+
+    .ventaja-tag {
+      display: inline-block;
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      color: var(--color-purple);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .ventaja-title {
+      font-family: var(--font-title);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--color-white);
+      margin-bottom: 20px;
+    }
+
+    .ventaja-title span { color: var(--color-cyan); }
+
+    .ventaja-desc {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.55);
+      max-width: 480px;
+    }
+
+    /* Check bullets */
+    .ventaja-checks {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ventaja-check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .ventaja-check::before {
+      content: '';
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-purple), var(--color-cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Checkmark via mask */
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23fff'/%3E%3Cpath d='M7 12l3 3 7-7' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") center/contain no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23fff'/%3E%3Cpath d='M7 12l3 3 7-7' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+
+    @media (max-width: 900px) {
+      .ventaja-row,
+      .ventaja-row.reverse { grid-template-columns: 1fr; }
+      .ventaja-row.reverse .ventaja-visual { order: 0; }
+      .ventaja-visual { margin-bottom: 8px; }
+      .ventaja-icon-wrap { width: 130px; height: 130px; }
+      .ventaja-emoji { font-size: 54px; }
+      #ventajas { padding: 72px 20px; }
+      .ventajas-list { gap: 56px; }
+    }
 
     /* ══════════════════════════════════════════════
        S6 · PLANES
        ══════════════════════════════════════════════ */
 
-    #planes { padding: 100px 20px; background: #07070F; position: relative; overflow: hidden; }
-    .planes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
-    .plan-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 45px 35px; border-radius: 28px; position: relative; transition: 0.3s; }
-    .plan-card.popular { border-color: var(--color-purple); background: rgba(108, 79, 240, 0.05); transform: scale(1.05); }
-    .plan-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--color-purple); color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; }
+    #planes {
+      padding: 100px clamp(20px, 6vw, 80px);
+      background: var(--color-bg);
+      position: relative;
+      overflow: hidden;
+    }
 
-    .plan-speed { font-family: var(--font-title); font-size: 72px; font-weight: 700; color: var(--color-cyan); line-height: 1; }
-    .plan-unit { font-size: 18px; color: var(--color-white); opacity: 0.6; margin-bottom: 20px; display: block; }
-    .plan-name { font-family: var(--font-title); font-size: 24px; margin-bottom: 15px; }
-    .plan-desc { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 30px; line-height: 1.5; min-height: 45px; }
-    .plan-btn { display: block; text-align: center; padding: 12px; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; text-decoration: none; font-weight: 600; transition: 0.3s; }
-    .plan-btn:hover { background: var(--color-purple); border-color: var(--color-purple); }
-    .plan-card.popular .plan-btn { background: var(--color-purple); border: none; }
+    /* Fondo decorativo radial */
+    #planes::before {
+      content: '';
+      position: absolute;
+      width: 800px; height: 500px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse, rgba(108,79,240,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-    @media (max-width: 768px) {
+    /* Badge precio */
+    .planes-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 52px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .planes-badge-inner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      background: rgba(108,79,240,0.12);
+      border: 1px solid rgba(108,79,240,0.4);
+      border-radius: 50px;
+      font-family: var(--font-accent);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-white);
+      animation: pulseBadge 2.5s ease-in-out infinite;
+    }
+
+    .planes-badge-inner span { color: var(--color-cyan); }
+
+    /* Grid de planes */
+    .planes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      align-items: start;
+    }
+
+    /* Card de plan */
+    .plan-card {
+      position: relative;
+      padding: 36px 28px 32px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(108,79,240,0.35);
+      box-shadow: 0 24px 56px rgba(108,79,240,0.18);
+    }
+
+    /* Card popular: destacada */
+    .plan-card.popular {
+      border-color: rgba(108,79,240,0.5);
+      background: linear-gradient(145deg, rgba(108,79,240,0.12) 0%, rgba(0,229,255,0.04) 100%);
+      transform: scale(1.04);
+    }
+
+    .plan-card.popular:hover {
+      transform: scale(1.04) translateY(-8px);
+    }
+
+    /* Badge MÁS POPULAR */
+    .plan-popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--color-purple), var(--color-cyan));
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      padding: 5px 18px;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+
+    .plan-speed {
+      font-family: var(--font-title);
+      font-size: clamp(52px, 6vw, 72px);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+      background: linear-gradient(135deg, #fff, var(--color-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .plan-speed-unit {
+      font-family: var(--font-accent);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-cyan);
+      margin-bottom: 8px;
+    }
+
+    .plan-name {
+      font-family: var(--font-title);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-white);
+      margin-bottom: 16px;
+    }
+
+    .plan-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      margin-bottom: 20px;
+    }
+
+    .plan-ideal {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--color-cyan);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .plan-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 28px;
+      flex: 1;
+    }
+
+    .plan-cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 13px 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--color-white);
+      font-family: var(--font-accent);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 12px;
+      transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .plan-cta:hover {
+      background: rgba(108,79,240,0.2);
+      border-color: var(--color-purple);
+      color: var(--color-cyan);
+    }
+
+    .plan-card.popular .plan-cta {
+      background: linear-gradient(135deg, var(--color-purple), var(--color-blue));
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(108,79,240,0.4);
+    }
+
+    .plan-card.popular .plan-cta:hover {
+      box-shadow: 0 8px 32px rgba(108,79,240,0.6);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 1024px) {
+      .planes-grid { grid-template-columns: repeat(2, 1fr); }
       .plan-card.popular { transform: scale(1); }
-      #planes { padding: 70px 20px; }
+      .plan-card.popular:hover { transform: translateY(-8px); }
+    }
+    @media (max-width: 600px) {
+      .planes-grid { grid-template-columns: 1fr; }
+      #planes { padding: 72px 20px; }
     }
 
     /* ══════════════════════════════════════════════
-       S9 · CONTACTO & FOOTER
+       S7 · REFERIDOS
        ══════════════════════════════════════════════ */
 
-    #contacto { padding: 120px 20px; text-align: center; background: linear-gradient(180deg, #07070F, #0A0A14); }
-    .cta-final-box { max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 80px 40px; border-radius: 40px; backdrop-filter: blur(20px); }
-    .cta-final-title { font-family: var(--font-title); font-size: clamp(36px, 6vw, 64px); font-weight: 700; margin-bottom: 30px; }
-    .btn-giant { display: inline-flex; align-items: center; gap: 15px; padding: 20px 50px; background: var(--color-wa); color: #fff; font-size: 20px; font-weight: 700; border-radius: 60px; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4); }
-    .btn-giant:hover { transform: scale(1.05); box-shadow: 0 15px 50px rgba(37, 211, 102, 0.6); }
+    #referidos {
+      padding: 100px clamp(20px, 6vw, 80px);
+      background: linear-gradient(135deg, #0f0824 0%, #080818 50%, #0a1028 100%);
+      position: relative;
+      overflow: hidden;
+    }
 
-    #footer { padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
-    .footer-logo { font-family: var(--font-title); font-size: 28px; font-weight: 700; margin-bottom: 10px; display: block; color: #fff; text-decoration: none; }
-    .footer-copy { color: rgba(255,255,255,0.3); font-size: 13px; margin-top: 20px; }
+    /* Fondo de destellos de confeti CSS */
+    .ref-sparkle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: sparkleFloat linear infinite;
+    }
 
-    /* REVEAL SYSTEM */
-    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+    @keyframes sparkleFloat {
+      0%   { transform: translateY(0) rotate(0deg);   opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.6; }
+      100% { transform: translateY(-80vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Card principal de referidos */
+    .ref-card {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      border-radius: 28px;
+      padding: 3px; /* espacio para el borde animado */
+      background: conic-gradient(
+        from var(--ref-angle, 0deg),
+        #6C4FF0, #00AAFF, #00E5FF, #6C4FF0
+      );
+      animation: rotateBorder 4s linear infinite;
+    }
+
+    @property --ref-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    @keyframes rotateBorder {
+      to { --ref-angle: 360deg; }
+    }
+
+    /* Fallback para navegadores sin @property */
+    @supports not (background: conic-gradient(from 0deg, red, blue)) {
+      .ref-card {
+        background: linear-gradient(135deg, var(--color-purple), var(--color-cyan));
+        animation: none;
+      }
+    }
+
+    /* Interior de la card */
+    .ref-card-inner {
+      background: linear-gradient(135deg, #0f0824 0%, #0a0a18 100%);
+      border-radius: 26px;
+      padding: 56px clamp(28px, 6vw, 72px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Glow central */
+    .ref-card-inner::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 300px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse, rgba(108,79,240,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .ref-icon {
+      font-size: 64px;
+      line-height: 1;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 0 24px rgba(108,79,240,0.6));
+      animation: refIconBounce 2.5s ease-in-out infinite;
+    }
+
+    @keyframes refIconBounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%       { transform: translateY(-8px) scale(1.05); }
+    }
+
+    .ref-label {
+      display: inline-block;
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--color-cyan);
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border: 1px solid rgba(0,229,255,0.3);
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+
+    .ref-headline {
+      font-family: var(--font-title);
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--color-white);
+      margin-bottom: 20px;
+    }
+
+    .ref-headline .free {
+      background: linear-gradient(90deg, var(--color-purple), var(--color-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .ref-desc {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.6);
+      max-width: 580px;
+      margin-bottom: 36px;
+    }
+
+    .ref-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, var(--color-purple), var(--color-blue));
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 6px 28px rgba(108,79,240,0.45);
+      position: relative;
+      z-index: 1;
+    }
+
+    .ref-cta:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(108,79,240,0.65);
+    }
+
+    @media (max-width: 768px) {
+      #referidos { padding: 72px 20px; }
+      .ref-card-inner { padding: 40px 24px; }
+      .ref-headline { font-size: clamp(24px, 8vw, 40px); }
+    }
+
+    /* ══════════════════════════════════════════════
+       S8 · COBERTURA
+       ══════════════════════════════════════════════ */
+
+    #cobertura {
+      padding: 100px clamp(20px, 6vw, 80px);
+      background: var(--color-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cobertura-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    /* Panel izquierdo: colonias */
+    .cobertura-content {}
+
+    /* Lista de colonias */
+    .colonias-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .colonia-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-white);
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .colonia-item:hover {
+      background: rgba(0,229,255,0.05);
+      border-color: rgba(0,229,255,0.2);
+      transform: translateX(4px);
+    }
+
+    .colonia-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00AAFF, #00E5FF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(0,229,255,0.4);
+    }
+
+    .colonia-check svg {
+      width: 13px; height: 13px;
+    }
+
+    /* Badge expansión */
+    .expansion-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: rgba(0,170,255,0.07);
+      border: 1px solid rgba(0,170,255,0.2);
+      border-radius: 14px;
+      margin-bottom: 28px;
+      animation: pulseBadge 3s ease-in-out infinite;
+    }
+
+    .expansion-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--color-blue);
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(0,170,255,0.8);
+      animation: dotPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(1);   box-shadow: 0 0 10px rgba(0,170,255,0.8); }
+      50%       { transform: scale(1.4); box-shadow: 0 0 20px rgba(0,170,255,1);   }
+    }
+
+    .expansion-text {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .expansion-text strong {
+      color: var(--color-blue);
+      display: block;
+      font-size: 13px;
+      font-family: var(--font-accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .cobertura-note {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .cobertura-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      background: var(--color-wa);
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    }
+
+    .cobertura-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37,211,102,0.55);
+    }
+
+    /* Panel derecho: ilustración SVG de red */
+    .cobertura-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .cobertura-svg-wrap {
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+    }
+
+    .cobertura-svg-wrap svg {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 30px rgba(108,79,240,0.2));
+    }
+
+    /* Nodos pulsantes en el SVG */
+    .net-node {
+      animation: nodePulse 2.5s ease-in-out infinite;
+    }
+
+    .net-node:nth-child(2) { animation-delay: 0.4s; }
+    .net-node:nth-child(3) { animation-delay: 0.8s; }
+    .net-node:nth-child(4) { animation-delay: 1.2s; }
+    .net-node:nth-child(5) { animation-delay: 1.6s; }
+
+    @keyframes nodePulse {
+      0%, 100% { opacity: 0.6; r: 5; }
+      50%       { opacity: 1;   r: 7; }
+    }
+
+    /* Líneas de fibra pulsantes */
+    .net-line {
+      stroke-dasharray: 8 4;
+      animation: lineDash 2s linear infinite;
+    }
+
+    @keyframes lineDash {
+      to { stroke-dashoffset: -24; }
+    }
+
+    @media (max-width: 900px) {
+      .cobertura-layout {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .cobertura-visual { order: -1; }
+      .cobertura-svg-wrap { max-width: 280px; }
+      #cobertura { padding: 72px 20px; }
+    }
+
+    /* ══════════════════════════════════════════════
+       S9 · CONTACTO
+       ══════════════════════════════════════════════ */
+
+    #contacto {
+      padding: 120px clamp(20px, 6vw, 80px);
+      background: linear-gradient(180deg, var(--color-bg) 0%, #080814 100%);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    #contacto::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1000px; height: 600px;
+      background: radial-gradient(ellipse, rgba(108,79,240,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contacto-box {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 32px;
+      padding: 64px 40px;
+      position: relative;
+      z-index: 2;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+    }
+
+    .contacto-icon {
+      font-size: 56px;
+      margin-bottom: 24px;
+      animation: pulseBadge 3s ease-in-out infinite;
+    }
+
+    .contacto-title {
+      font-family: var(--font-title);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #fff, var(--color-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contacto-desc {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 48px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .contacto-cta-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .contacto-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 48px;
+      background: var(--color-wa);
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      box-shadow: 0 8px 32px rgba(37,211,102,0.4);
+    }
+
+    .contacto-cta:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 16px 48px rgba(37,211,102,0.6);
+      background: #20c05a;
+    }
+
+    .contacto-cta svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .contacto-info {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+    }
+    
+    .info-item svg {
+      color: var(--color-purple);
+    }
+
+    @media (max-width: 600px) {
+      .contacto-box { padding: 48px 24px; }
+      .contacto-info { flex-direction: column; gap: 16px; align-items: center; }
+    }
+
+    /* ══════════════════════════════════════════════
+       S10 · FOOTER
+       ══════════════════════════════════════════════ */
+
+    #footer {
+      background: #04040A;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 80px clamp(20px, 6vw, 80px) 40px;
+      position: relative;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+
+    .footer-brand {
+      max-width: 340px;
+    }
+
+    .footer-brand .nav-logo {
+      margin-bottom: 24px;
+    }
+
+    .footer-desc {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 24px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
+    }
+
+    .social-link:hover {
+      background: rgba(108,79,240,0.15);
+      color: var(--color-cyan);
+      border-color: rgba(108,79,240,0.4);
+      transform: translateY(-3px);
+    }
+
+    .footer-col-title {
+      font-family: var(--font-title);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-white);
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-links a {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-cyan);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-legal a {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-legal a:hover {
+      color: var(--color-white);
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
+    }
 
   </style>
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
-  <header id="navbar">
-    <a href="#" class="nav-logo">
+  <!-- ╔═══════════════════════════════════════════════╗
+       ║  S1 · NAVBAR FIJO                             ║
+       ╚═══════════════════════════════════════════════╝ -->
+  <header id="navbar" role="banner">
+
+    <!-- Logo -->
+    <a href="#inicio" class="nav-logo" aria-label="OPTINET - Inicio">
       <div class="nav-logo-icon">
-        <svg width="40" height="40" viewBox="0 0 36 36" fill="none">
-          <circle cx="18" cy="18" r="17" fill="#6C4FF0" opacity="0.15"/>
-          <path d="M6 16c3-4 8-6.5 12-6.5s9 2.5 12 6.5" stroke="#6C4FF0" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M10 20c2-2.5 5-4 8-4s6 1.5 8 4" stroke="#00E5FF" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="18" cy="28" r="2.5" fill="#00E5FF"/>
+        <!-- Ícono WiFi morado inline SVG -->
+        <svg width="48" height="48" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="wifi-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6C4FF0"/>
+              <stop offset="100%" stop-color="#00E5FF"/>
+            </linearGradient>
+          </defs>
+          <!-- Círculo de fondo sutil -->
+          <circle cx="18" cy="18" r="17" fill="url(#wifi-grad)" opacity="0.12"/>
+          <!-- Arco grande -->
+          <path d="M6.5 16.2C9.8 12.1 14.6 9.5 18 9.5c3.4 0 8.2 2.6 11.5 6.7" stroke="url(#wifi-grad)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <!-- Arco medio -->
+          <path d="M10.5 19.8C12.8 17.1 15.3 15.5 18 15.5c2.7 0 5.2 1.6 7.5 4.3" stroke="url(#wifi-grad)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <!-- Arco pequeño -->
+          <path d="M14.2 23.3C15.4 21.8 16.7 21 18 21c1.3 0 2.6.8 3.8 2.3" stroke="url(#wifi-grad)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <!-- Punto central -->
+          <circle cx="18" cy="27" r="2" fill="url(#wifi-grad)"/>
         </svg>
       </div>
-      <div class="nav-logo-divider"></div>
+      <div class="nav-logo-divider" aria-hidden="true"></div>
       <span class="nav-logo-text"><span>OPTI</span>NET</span>
     </a>
 
-    <ul class="nav-links nav-links-desktop">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#audiencias">Beneficios</a></li>
-      <li><a href="#planes">Planes</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
+    <!-- Nav links — desktop -->
+    <nav role="navigation" aria-label="Menú principal">
+      <ul class="nav-links nav-links-desktop">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#cobertura">Cobertura</a></li>
+        <li><a href="#planes">Planes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
 
-    <a href="https://wa.me/524811098428" class="nav-cta nav-cta-desktop" target="_blank">
+    <!-- CTA desktop -->
+    <a href="https://wa.me/524811098428?text=Hola%2C%20me%20interesa%20contratar%20el%20servicio%20de%20OPTINET"
+       class="nav-cta nav-cta-desktop"
+       id="nav-cta-desktop"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Contratar OPTINET por WhatsApp">
+      <!-- WhatsApp icon -->
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
       Contratar por WhatsApp
     </a>
 
-    <button class="nav-hamburger" id="hamburger">
+    <!-- Hamburger — mobile -->
+    <button class="nav-hamburger" id="nav-hamburger"
+            aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile-menu">
       <span></span>
       <span></span>
       <span></span>
     </button>
+
   </header>
 
-  <!-- MOBILE MENU -->
-  <div class="nav-mobile-menu" id="mobile-menu">
-    <ul class="nav-links">
-      <li><a href="#inicio" onclick="closeMenu()">Inicio</a></li>
-      <li><a href="#audiencias" onclick="closeMenu()">Beneficios</a></li>
-      <li><a href="#planes" onclick="closeMenu()">Planes</a></li>
-      <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
-    </ul>
-    <a href="https://wa.me/524811098428" class="nav-cta" target="_blank">WhatsApp</a>
+  <!-- Mobile Drawer -->
+  <div class="nav-mobile-menu" id="nav-mobile-menu" role="dialog" aria-label="Menú móvil" aria-modal="true">
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#inicio"    class="mobile-link">Inicio</a></li>
+        <li><a href="#cobertura" class="mobile-link">Cobertura</a></li>
+        <li><a href="#planes"   class="mobile-link">Planes</a></li>
+        <li><a href="#contacto" class="mobile-link">Contacto</a></li>
+      </ul>
+    </nav>
+    <a href="https://wa.me/524811098428?text=Hola%2C%20me%20interesa%20contratar%20el%20servicio%20de%20OPTINET"
+       class="nav-cta"
+       id="nav-cta-mobile"
+       target="_blank" rel="noopener noreferrer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Contratar por WhatsApp
+    </a>
   </div>
 
   <main>
-    <!-- HERO -->
-    <section class="scroll-video-hero" id="inicio">
+
+    <!-- ╔═══════════════════════════════════════════════╗
+         ║  S2 · HERO — SCROLL-DRIVEN VIDEO (CANVAS)    ║
+         ╚═══════════════════════════════════════════════╝ -->
+    <section id="inicio" class="scroll-video-hero" aria-label="Hero principal con efecto scroll-video">
       <div class="scroll-video-sticky">
-        <div class="hero-bg-particles" id="particles"></div>
-        
-        <video id="heroVideo" src="assets/video_base.mp4" playsinline muted preload="auto" style="display:none;"></video>
-        <canvas id="heroCanvas"></canvas>
 
-        <div class="cable-words-layer" id="words"></div>
+        <!-- Fondo: gradiente + partículas CSS -->
+        <div class="hero-bg-particles" id="heroBgParticles" aria-hidden="true"></div>
 
+        <!-- Fallback si no hay video -->
+        <div class="hero-no-video-bg" id="heroNoVideoBg" aria-hidden="true"></div>
+
+        <!-- Video oculto: fuente de frames para el canvas -->
+        <video id="heroVideo"
+               src="assets/video_base.mp4"
+               playsinline muted preload="auto"
+               style="display:none; position:absolute;"
+               aria-hidden="true">
+        </video>
+
+        <!-- Canvas: renderiza frames sin fondo (chroma key) -->
+        <canvas id="heroCanvas" aria-hidden="true"></canvas>
+
+        <!-- Palabras flotantes sobre el cable -->
+        <div class="cable-words-layer" id="cableWordsLayer" aria-hidden="true"></div>
+
+        <!-- Contenido del Hero -->
         <div class="hero-content">
-          <div class="hero-badge">⚡ PAQUETES DESDE $349/MES</div>
-          <h1 class="hero-headline">INTERNET<br><span class="line2">FIBRA ÓPTICA</span></h1>
-          <p class="hero-subtitle">Estabilidad Real y Velocidad Real para tu hogar en Ciudad Valles.</p>
+
+          <!-- Badge precio pulsante -->
+          <div class="hero-badge" role="note">
+            <span>⚡</span>
+            <span>PAQUETES DESDE $349/MES</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="hero-headline">
+            INTERNET<br>
+            <span class="line2">FIBRA ÓPTICA</span>
+          </h1>
+
+          <!-- Subtítulo -->
+          <p class="hero-subtitle">
+            <span class="gradient-text" style="font-weight: 600;">Estabilidad Real y Velocidad Real</span><br>
+            <span style="opacity: 0.85;">en Ciudad Valles, San Luis Potosí</span>
+          </p>
+
+          <!-- CTAs -->
           <div class="hero-ctas">
-            <a href="#planes" class="btn-primary">Ver Paquetes</a>
-            <a href="https://wa.me/524811098428" class="btn-wa" target="_blank">Hablar con un asesor</a>
+            <a href="#planes"
+               class="btn-primary"
+               id="hero-cta-planes"
+               aria-label="Ver los planes de internet OPTINET">
+              Ver Paquetes
+            </a>
+            <a href="https://wa.me/524811098428?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20OPTINET"
+               class="btn-wa"
+               id="hero-cta-wa"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Hablar con un asesor de OPTINET por WhatsApp">
+              <!-- WA icon -->
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              💬 Hablar con un Asesor
+            </a>
           </div>
         </div>
 
-        <div class="scroll-progress-bar">
-          <div class="scroll-progress-fill" id="progress"></div>
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator" aria-hidden="true">
+          <span>Scroll</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2" stroke-linecap="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
         </div>
+
+        <!-- Barra de progreso del scroll -->
+        <div class="scroll-progress-bar" aria-hidden="true">
+          <div class="scroll-progress-fill" id="progressFill"></div>
+        </div>
+
       </div>
     </section>
 
-    <!-- STATS -->
-    <section id="stats">
-      <div class="stats-grid">
-        <div class="stat-card reveal" data-target="300" data-suffix="+">
-          <div class="stat-number">0</div>
-          <div class="stat-label">Clientes Conectados</div>
+    <!-- ╔═══════════════════════════════════════════════╗
+         ║  S3 · CONTADOR EN TIEMPO REAL                 ║
+         ╚═══════════════════════════════════════════════╝ -->
+    <section id="stats" aria-label="Estadísticas y logros de OPTINET">
+
+      <div class="stats-header">
+        <div class="section-label">NÚMEROS QUE IMPORTAN</div>
+        <h2>OPTINET en cifras</h2>
+      </div>
+
+      <div class="stats-grid" id="statsGrid">
+
+        <div class="stat-card" data-delay="0" aria-label="Más de 300 clientes conectados">
+          <div class="stat-icon" aria-hidden="true">👥</div>
+          <div class="stat-number" id="stat-clientes">0</div>
+          <div class="stat-label">Clientes conectados<br><small style="color:rgba(255,255,255,0.3);font-size:12px;">Y creciendo cada día</small></div>
         </div>
-        <div class="stat-card reveal" data-target="99" data-suffix=".9%">
-          <div class="stat-number">0</div>
-          <div class="stat-label">Uptime Garantizado</div>
+
+        <div class="stat-card" data-delay="150" aria-label="99.9% de uptime mensual garantizado">
+          <div class="stat-icon" aria-hidden="true">⚡</div>
+          <div class="stat-number purple" id="stat-uptime">0%</div>
+          <div class="stat-label">Uptime mensual<br><small style="color:rgba(255,255,255,0.3);font-size:12px;">Velocidad garantizada</small></div>
         </div>
-        <div class="stat-card reveal" data-target="2" data-suffix=" hrs">
-          <div class="stat-number">0</div>
-          <div class="stat-label">Tiempo de Instalación</div>
+
+        <div class="stat-card" data-delay="300" aria-label="Instalación en menos de 2 horas">
+          <div class="stat-icon" aria-hidden="true">🕐</div>
+          <div class="stat-number" id="stat-hrs">0</div>
+          <div class="stat-label">Tiempo de instalación<br><small style="color:rgba(255,255,255,0.3);font-size:12px;">Conéctate hoy mismo</small></div>
         </div>
+
       </div>
     </section>
 
-    <!-- AUDIENCIAS -->
-    <section id="audiencias">
-      <div class="section-header reveal">
-        <span class="section-label">Hecho para ti</span>
-        <h2 class="section-title">Velocidad para lo que <span class="gradient-text">más te gusta</span></h2>
+    <!-- ╔═══════════════════════════════════════════════╗
+         ║  S4 · ¿PARA QUIÉN ES OPTINET?                 ║
+         ╚═══════════════════════════════════════════════╝ -->
+    <section id="para-quien" aria-label="Para quién es OPTINET">
+
+      <div class="section-header reveal-item">
+        <div class="section-label">HECHO PARA TI</div>
+        <h2>Para todos los que necesitan<br><span class="gradient-text">velocidad real</span></h2>
+        <p class="section-desc">Sin importar cómo uses internet, OPTINET tiene la fibra óptica que tu vida digital necesita.</p>
       </div>
-      <div class="audiencias-grid">
-        <div class="audiencia-card reveal">
-          <span class="audiencia-icon">🏠</span>
-          <h3 class="audiencia-title">Hogar Conectado</h3>
-          <p class="audiencia-desc">Streaming en 4K y múltiples dispositivos sin perder velocidad.</p>
+
+      <div class="audience-grid">
+
+        <div class="audience-card reveal-item" data-delay="0">
+          <div class="audience-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="48" height="48" rx="14" fill="url(#iconGrad1)"/>
+              <defs><linearGradient id="iconGrad1" x1="0" y1="0" x2="48" y2="48"><stop offset="0%" stop-color="#6C4FF0"/><stop offset="100%" stop-color="#00E5FF"/></linearGradient></defs>
+              <path d="M14 32h20M18 28v4M24 24v8M30 26v6" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+              <rect x="10" y="14" width="28" height="18" rx="3" stroke="#fff" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="audience-title">🏠 Hogares con múltiples dispositivos</h3>
+          <p class="audience-desc">Todos conectados al mismo tiempo, sin que la velocidad baje. Smart TV, celulares, tablets y más.</p>
+          <div class="audience-glow" aria-hidden="true"></div>
         </div>
-        <div class="audiencia-card reveal">
-          <span class="audiencia-icon">🎮</span>
-          <h3 class="audiencia-title">Gaming Pro</h3>
-          <p class="audiencia-desc">Baja latencia y cero lag para tus partidas competitivas.</p>
+
+        <div class="audience-card reveal-item" data-delay="100">
+          <div class="audience-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="48" height="48" rx="14" fill="url(#iconGrad2)"/>
+              <defs><linearGradient id="iconGrad2" x1="0" y1="0" x2="48" y2="48"><stop offset="0%" stop-color="#6C4FF0"/><stop offset="100%" stop-color="#00E5FF"/></linearGradient></defs>
+              <path d="M24 12L14 18v12l10 6 10-6V18L24 12z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M24 18v6M21 22l3 2 3-2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="audience-title">🎓 Estudiantes</h3>
+          <p class="audience-desc">Clases en línea, videollamadas y descargas sin interrupciones. Tu educación no puede esperar.</p>
+          <div class="audience-glow" aria-hidden="true"></div>
         </div>
-        <div class="audiencia-card reveal">
-          <span class="audiencia-icon">💼</span>
-          <h3 class="audiencia-title">Home Office</h3>
-          <p class="audiencia-desc">Videollamadas fluidas y subida de archivos pesados al instante.</p>
+
+        <div class="audience-card reveal-item" data-delay="200">
+          <div class="audience-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="48" height="48" rx="14" fill="url(#iconGrad3)"/>
+              <defs><linearGradient id="iconGrad3" x1="0" y1="0" x2="48" y2="48"><stop offset="0%" stop-color="#6C4FF0"/><stop offset="100%" stop-color="#00E5FF"/></linearGradient></defs>
+              <rect x="12" y="16" width="24" height="16" rx="2" stroke="#fff" stroke-width="2"/>
+              <path d="M18 20h12M18 24h8" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="32" cy="24" r="3" stroke="#fff" stroke-width="1.8"/>
+            </svg>
+          </div>
+          <h3 class="audience-title">💼 Trabajadores remotos</h3>
+          <p class="audience-desc">Conexión estable para videollamadas y trabajo en la nube. Tu oficina donde tú estés.</p>
+          <div class="audience-glow" aria-hidden="true"></div>
         </div>
+
+        <div class="audience-card reveal-item" data-delay="300">
+          <div class="audience-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="48" height="48" rx="14" fill="url(#iconGrad4)"/>
+              <defs><linearGradient id="iconGrad4" x1="0" y1="0" x2="48" y2="48"><stop offset="0%" stop-color="#6C4FF0"/><stop offset="100%" stop-color="#00E5FF"/></linearGradient></defs>
+              <rect x="10" y="20" width="28" height="14" rx="3" stroke="#fff" stroke-width="2"/>
+              <circle cx="16" cy="27" r="2.5" stroke="#fff" stroke-width="1.8"/>
+              <circle cx="32" cy="27" r="2.5" stroke="#fff" stroke-width="1.8"/>
+              <path d="M22 23v2M26 23v2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M18 20v-4a6 6 0 0112 0v4" stroke="#fff" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="audience-title">🎮 Gamers</h3>
+          <p class="audience-desc">Baja latencia, cero lag. Juega en serio con fibra óptica. Sin cortes, sin excusas, pura señal.</p>
+          <div class="audience-glow" aria-hidden="true"></div>
+        </div>
+
       </div>
     </section>
 
-    <!-- PLANES -->
-    <section id="planes">
-      <div class="section-header reveal">
-        <span class="section-label">Planes</span>
-        <h2 class="section-title">Elige tu <span class="gradient-text">Velocidad</span></h2>
+    <!-- ╔═══════════════════════════════════════════════╗
+         ║  S5 · ¿POR QUÉ OPTINET?                       ║
+         ╚═══════════════════════════════════════════════╝ -->
+    <section id="ventajas" aria-label="Ventajas de OPTINET">
+
+      <div class="section-header reveal-item">
+        <div class="section-label">POR QUÉ ELEGIRNOS</div>
+        <h2>Ventajas reales,<br><span class="gradient-text">no promesas</span></h2>
       </div>
+
+      <div class="ventajas-list">
+
+        <!-- Ventaja 1: Instalación inmediata -->
+        <div class="ventaja-row reveal-item" data-delay="0">
+          <div class="ventaja-visual">
+            <div class="ventaja-icon-wrap">
+              <span class="ventaja-emoji" aria-hidden="true">⚡</span>
+            </div>
+          </div>
+          <div class="ventaja-content">
+            <div class="ventaja-tag">Instalación</div>
+            <h3 class="ventaja-title">Conectándote en<br><span>menos de 2 horas</span></h3>
+            <p class="ventaja-desc">Nos comprometemos a instalarte el mismo día que nos contactas. Sin citas para semanas después, sin esperas interminables.</p>
+            <div class="ventaja-checks">
+              <div class="ventaja-check">Instalación el mismo día</div>
+              <div class="ventaja-check">Técnicos certificados en fibra óptica</div>
+              <div class="ventaja-check">Equipo incluido sin costo adicional</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ventaja 2: Soporte técnico (inverso) -->
+        <div class="ventaja-row reverse reveal-item" data-delay="0">
+          <div class="ventaja-visual">
+            <div class="ventaja-icon-wrap">
+              <span class="ventaja-emoji" aria-hidden="true">🔧</span>
+            </div>
+          </div>
+          <div class="ventaja-content">
+            <div class="ventaja-tag">Soporte</div>
+            <h3 class="ventaja-title">Un técnico real,<br><span>no un bot</span></h3>
+            <p class="ventaja-desc">Disponible de Lunes a Sábado de 8AM a 6PM. Cuando tienes un problema, te atendemos personas reales que conocen tu instalación.</p>
+            <div class="ventaja-checks">
+              <div class="ventaja-check">Atención personalizada garantizada</div>
+              <div class="ventaja-check">Respuesta en menos de 2 horas</div>
+              <div class="ventaja-check">Seguimiento hasta resolver tu caso</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ventaja 3: Fibra pura -->
+        <div class="ventaja-row reveal-item" data-delay="0">
+          <div class="ventaja-visual">
+            <div class="ventaja-icon-wrap">
+              <span class="ventaja-emoji" aria-hidden="true">🌐</span>
+            </div>
+          </div>
+          <div class="ventaja-content">
+            <div class="ventaja-tag">Tecnología</div>
+            <h3 class="ventaja-title">Fibra óptica pura,<br><span>sin compartir</span></h3>
+            <p class="ventaja-desc">No compartimos señal con miles de vecinos. Tu velocidad contratada es tu velocidad real, las 24 horas del día, todos los días.</p>
+            <div class="ventaja-checks">
+              <div class="ventaja-check">Velocidad simétrica de subida y bajada</div>
+              <div class="ventaja-check">Sin throttling ni límites ocultos</div>
+              <div class="ventaja-check">Latencia ultra-baja para gaming y videollamadas</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ╔═══════════════════════════════════════════════╗
+         ║  S6 · PLANES                                   ║
+         ╚═══════════════════════════════════════════════╝ -->
+    <section id="planes" aria-label="Planes de internet OPTINET">
+
+      <div class="section-header reveal-item">
+        <div class="section-label">ELIGE TU VELOCIDAD</div>
+        <h2>El plan perfecto<br><span class="gradient-text">para tu hogar</span></h2>
+      </div>
+
+      <!-- Badge precio desde -->
+      <div class="planes-badge reveal-item" data-delay="100">
+        <div class="planes-badge-inner">
+          <span>⚡</span>
+          TODOS NUESTROS PLANES DESDE
+          <span>$349/MES</span>
+          — Consulta disponibilidad por WhatsApp
+        </div>
+      </div>
+
       <div class="planes-grid">
-        <div class="plan-card reveal">
+
+        <!-- Plan Básico -->
+        <div class="plan-card reveal-item" data-delay="0">
           <div class="plan-speed">20</div>
-          <span class="plan-unit">Mbps</span>
-          <h3 class="plan-name">Plan Básico</h3>
-          <p class="plan-desc">Ideal para navegar y redes sociales en 1-2 dispositivos.</p>
-          <a href="https://wa.me/524811098428" class="plan-btn">Consultar Precio</a>
+          <div class="plan-speed-unit">Mbps</div>
+          <div class="plan-name">Plan Básico</div>
+          <div class="plan-divider"></div>
+          <div class="plan-ideal">Ideal para</div>
+          <p class="plan-desc">Navegación web, redes sociales y correo. Perfecto para 1-2 dispositivos simultáneos.</p>
+          <a href="https://wa.me/524811098428?text=Hola%2C%20me%20interesa%20conocer%20el%20precio%20del%20Plan%20B%C3%A1sico%2020Mbps%20de%20OPTINET"
+             class="plan-cta"
+             id="plan-basico-cta"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Consultar precio del Plan Básico por WhatsApp">
+            Consultar precio →
+          </a>
         </div>
-        <div class="plan-card popular reveal">
-          <div class="plan-badge">MÁS POPULAR</div>
+
+        <!-- Plan Hogar -->
+        <div class="plan-card reveal-item" data-delay="100">
+          <div class="plan-speed">30</div>
+          <div class="plan-speed-unit">Mbps</div>
+          <div class="plan-name">Plan Hogar</div>
+          <div class="plan-divider"></div>
+          <div class="plan-ideal">Ideal para</div>
+          <p class="plan-desc">Streaming en HD, videollamadas fluidas y navegación para 3-4 dispositivos en familia.</p>
+          <a href="https://wa.me/524811098428?text=Hola%2C%20me%20interesa%20conocer%20el%20precio%20del%20Plan%20Hogar%2030Mbps%20de%20OPTINET"
+             class="plan-cta"
+             id="plan-hogar-cta"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Consultar precio del Plan Hogar por WhatsApp">
+            Consultar precio →
+          </a>
+        </div>
+
+        <!-- Plan Plus — MÁS POPULAR -->
+        <div class="plan-card popular reveal-item" data-delay="200">
+          <div class="plan-popular-badge">⭐ MÁS POPULAR</div>
           <div class="plan-speed">40</div>
-          <span class="plan-unit">Mbps</span>
-          <h3 class="plan-name">Plan Plus</h3>
-          <p class="plan-desc">Perfecto para familias que aman el streaming y el estudio.</p>
-          <a href="https://wa.me/524811098428" class="plan-btn">Consultar Precio</a>
+          <div class="plan-speed-unit">Mbps</div>
+          <div class="plan-name">Plan Plus</div>
+          <div class="plan-divider"></div>
+          <div class="plan-ideal">Ideal para</div>
+          <p class="plan-desc">Trabajo remoto, streaming en 4K y conexión estable para 5+ dispositivos sin interrupciones.</p>
+          <a href="https://wa.me/524811098428?text=Hola%2C%20me%20interesa%20conocer%20el%20precio%20del%20Plan%20Plus%2040Mbps%20de%20OPTINET"
+             class="plan-cta"
+             id="plan-plus-cta"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Consultar precio del Plan Plus por WhatsApp">
+            Consultar precio →
+          </a>
         </div>
-        <div class="plan-card reveal">
+
+        <!-- Plan Pro -->
+        <div class="plan-card reveal-item" data-delay="300">
           <div class="plan-speed">50</div>
-          <span class="plan-unit">Mbps</span>
-          <h3 class="plan-name">Plan Pro</h3>
-          <p class="plan-desc">Máxima potencia para gamers y trabajo intensivo.</p>
-          <a href="https://wa.me/524811098428" class="plan-btn">Consultar Precio</a>
+          <div class="plan-speed-unit">Mbps</div>
+          <div class="plan-name">Plan Pro</div>
+          <div class="plan-divider"></div>
+          <div class="plan-ideal">Ideal para</div>
+          <p class="plan-desc">Gamers exigentes, teletrabajo intensivo y hogares con toda la familia conectada sin lag.</p>
+          <a href="https://wa.me/524811098428?text=Hola%2C%20me%20interesa%20conocer%20el%20precio%20del%20Plan%20Pro%2050Mbps%20de%20OPTINET"
+             class="plan-cta"
+             id="plan-pro-cta"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Consultar precio del Plan Pro por WhatsApp">
+            Consultar precio →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ╔═══════════════════════════════════════════════╗
+         ║  S7 · PROGRAMA DE REFERIDOS                    ║
+         ╚═══════════════════════════════════════════════╝ -->
+    <section id="referidos" aria-label="Programa de referidos OPTINET">
+
+      <!-- Destellos de confeti CSS (generados por JS) -->
+      <div class="ref-sparkles-container" id="refSparkles" aria-hidden="true"></div>
+
+      <div class="ref-card reveal-item">
+        <div class="ref-card-inner">
+
+          <!-- Ícono animado -->
+          <div class="ref-icon" aria-hidden="true">🎁</div>
+
+          <!-- Label -->
+          <div class="ref-label">PROGRAMA DE REFERIDOS</div>
+
+          <!-- Headline -->
+          <h2 class="ref-headline">
+            Trae a un vecino y gana<br>
+            <span class="free">1 MES DE INTERNET GRATIS</span>
+          </h2>
+
+          <!-- Descripción -->
+          <p class="ref-desc">
+            Por cada amigo o vecino que conectes a OPTINET, <strong style="color:#fff;">ambos se benefician</strong>.
+            Tú ganas un mes gratis, él se conecta a la mejor fibra óptica de Ciudad Valles.
+            Sin límites — cuantos más refieras, más ganas.
+          </p>
+
+          <!-- CTA WhatsApp -->
+          <a href="https://wa.me/524811098428?text=Hola%2C%20quiero%20referir%20a%20un%20vecino%20y%20ganar%20mi%20mes%20gratis%20con%20OPTINET"
+             class="ref-cta"
+             id="referidos-cta"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Referir un vecino a OPTINET por WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Quiero referir a alguien →
+          </a>
+
         </div>
       </div>
     </section>
 
-    <!-- CONTACTO -->
-    <section id="contacto">
-      <div class="cta-final-box reveal">
-        <h2 class="cta-final-title">¿Listo para<br><span class="gradient-text">conectarte?</span></h2>
-        <a href="https://wa.me/524811098428" class="btn-giant">
-          Contratar por WhatsApp
-        </a>
+    <!-- ╔═══════════════════════════════════════════════╗
+         ║  S8 · COBERTURA                                ║
+         ╚═══════════════════════════════════════════════╝ -->
+    <section id="cobertura" aria-label="Cobertura OPTINET en Ciudad Valles">
+
+      <div class="section-header reveal-item">
+        <div class="section-label">¿LLEGAMOS A TU COLONIA?</div>
+        <h2>Cobertura en<br><span class="gradient-text">Ciudad Valles</span></h2>
+      </div>
+
+      <div class="cobertura-layout">
+
+        <!-- Panel izquierdo: colonias -->
+        <div class="cobertura-content reveal-item" data-delay="100">
+
+          <!-- Lista de colonias activas -->
+          <div class="colonias-list">
+            <div class="colonia-item">
+              <div class="colonia-check" aria-hidden="true">
+                <svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Gavilanes 1
+            </div>
+            <div class="colonia-item">
+              <div class="colonia-check" aria-hidden="true">
+                <svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Gavilanes 2
+            </div>
+            <div class="colonia-item">
+              <div class="colonia-check" aria-hidden="true">
+                <svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Gavilanes 3
+            </div>
+            <div class="colonia-item">
+              <div class="colonia-check" aria-hidden="true">
+                <svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Naranjos
+            </div>
+            <div class="colonia-item">
+              <div class="colonia-check" aria-hidden="true">
+                <svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Bicentenario
+            </div>
+          </div>
+
+          <!-- Badge expansión -->
+          <div class="expansion-badge" role="status">
+            <div class="expansion-dot" aria-hidden="true"></div>
+            <div class="expansion-text">
+              <strong>🔵 Expansión en proceso</strong>
+              Trabajando para llevar fibra óptica a más colonias de Ciudad Valles
+            </div>
+          </div>
+
+          <!-- Nota -->
+          <p class="cobertura-note">
+            ¿No ves tu colonia? Escíbenos, quizás ya llegamos o llegaremos muy pronto.
+          </p>
+
+          <!-- CTA -->
+          <a href="https://wa.me/524811098428?text=Hola%2C%20quiero%20saber%20si%20hay%20cobertura%20de%20OPTINET%20en%20mi%20colonia"
+             class="cobertura-cta"
+             id="cobertura-cta"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Consultar cobertura de OPTINET en mi zona por WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultar cobertura en mi zona →
+          </a>
+        </div>
+
+        <!-- Panel derecho: ilustración SVG de red de fibra -->
+        <div class="cobertura-visual reveal-item" data-delay="200">
+          <div class="cobertura-svg-wrap">
+            <svg viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Red de fibra óptica OPTINET" role="img">
+              <defs>
+                <linearGradient id="netGrad" x1="0" y1="0" x2="400" y2="340" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#6C4FF0"/>
+                  <stop offset="100%" stop-color="#00E5FF"/>
+                </linearGradient>
+                <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#00E5FF" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <!-- Líneas de fibra con animación dasharray -->
+              <line x1="200" y1="50" x2="80" y2="130" stroke="url(#netGrad)" stroke-width="1.5" stroke-opacity="0.5" class="net-line"/>
+              <line x1="200" y1="50" x2="200" y2="160" stroke="url(#netGrad)" stroke-width="1.5" stroke-opacity="0.5" class="net-line"/>
+              <line x1="200" y1="50" x2="320" y2="130" stroke="url(#netGrad)" stroke-width="1.5" stroke-opacity="0.5" class="net-line"/>
+              <line x1="80" y1="130" x2="200" y2="160" stroke="url(#netGrad)" stroke-width="1" stroke-opacity="0.35" class="net-line"/>
+              <line x1="320" y1="130" x2="200" y2="160" stroke="url(#netGrad)" stroke-width="1" stroke-opacity="0.35" class="net-line"/>
+              <line x1="80" y1="130" x2="60" y2="230" stroke="url(#netGrad)" stroke-width="1" stroke-opacity="0.3" class="net-line"/>
+              <line x1="80" y1="130" x2="150" y2="250" stroke="url(#netGrad)" stroke-width="1" stroke-opacity="0.3" class="net-line"/>
+              <line x1="200" y1="160" x2="200" y2="280" stroke="url(#netGrad)" stroke-width="1" stroke-opacity="0.3" class="net-line"/>
+              <line x1="320" y1="130" x2="340" y2="230" stroke="url(#netGrad)" stroke-width="1" stroke-opacity="0.3" class="net-line"/>
+              <line x1="320" y1="130" x2="260" y2="255" stroke="url(#netGrad)" stroke-width="1" stroke-opacity="0.3" class="net-line"/>
+
+              <!-- Halos de glow bajo nodos principales -->
+              <circle cx="200" cy="50" r="28" fill="url(#nodeGlow)" opacity="0.3"/>
+              <circle cx="80" cy="130" r="18" fill="url(#nodeGlow)" opacity="0.2"/>
+              <circle cx="320" cy="130" r="18" fill="url(#nodeGlow)" opacity="0.2"/>
+
+              <!-- Nodo central (hub) -->
+              <circle cx="200" cy="50" r="12" fill="#6C4FF0" class="net-node"/>
+              <circle cx="200" cy="50" r="7" fill="#00E5FF"/>
+
+              <!-- Nodos secundarios -->
+              <circle cx="80" cy="130" r="7" fill="#6C4FF0" class="net-node"/>
+              <circle cx="80" cy="130" r="4" fill="#00AAFF"/>
+              <circle cx="320" cy="130" r="7" fill="#6C4FF0" class="net-node"/>
+              <circle cx="320" cy="130" r="4" fill="#00AAFF"/>
+              <circle cx="200" cy="160" r="6" fill="#6C4FF0" class="net-node"/>
+              <circle cx="200" cy="160" r="3.5" fill="#00E5FF"/>
+
+              <!-- Nodos hoja -->
+              <circle cx="60" cy="230" r="5" fill="#6C4FF0" opacity="0.8" class="net-node"/>
+              <circle cx="150" cy="250" r="5" fill="#00E5FF" opacity="0.8" class="net-node"/>
+              <circle cx="200" cy="280" r="5" fill="#6C4FF0" opacity="0.8" class="net-node"/>
+              <circle cx="260" cy="255" r="5" fill="#00E5FF" opacity="0.8" class="net-node"/>
+              <circle cx="340" cy="230" r="5" fill="#6C4FF0" opacity="0.8" class="net-node"/>
+
+              <!-- Etiquetas de colonias -->
+              <text x="200" y="34" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="9" fill="#00E5FF" opacity="0.9" letter-spacing="1">OPTINET HUB</text>
+              <text x="34" y="232" font-family="Space Grotesk,sans-serif" font-size="8" fill="rgba(255,255,255,0.5)">Gavilanes</text>
+              <text x="110" y="265" font-family="Space Grotesk,sans-serif" font-size="8" fill="rgba(255,255,255,0.5)">Naranjos</text>
+              <text x="175" y="298" font-family="Space Grotesk,sans-serif" font-size="8" fill="rgba(255,255,255,0.5)">Bicentenario</text>
+              <text x="270" y="270" font-family="Space Grotesk,sans-serif" font-size="8" fill="rgba(255,255,255,0.5)">Gavilanes 2</text>
+              <text x="303" y="245" font-family="Space Grotesk,sans-serif" font-size="8" fill="rgba(255,255,255,0.5)">Gavilanes 3</text>
+            </svg>
+          </div>
+        </div>
+
       </div>
     </section>
+
+    <!-- ╔═══════════════════════════════════════════════╗
+         ║  S9 · CONTACTO Y CTA FINAL                     ║
+         ╚═══════════════════════════════════════════════╝ -->
+    <section id="contacto" aria-label="Contacto y llamada a la acción final">
+      <div class="contacto-box reveal-item">
+        <div class="contacto-icon" aria-hidden="true">🚀</div>
+        <h2 class="contacto-title">¿Listo para volar?</h2>
+        <p class="contacto-desc">
+          Contrata hoy mismo y comienza a disfrutar de la verdadera fibra óptica en tu hogar. Nuestro equipo técnico está listo para conectarte.
+        </p>
+        <div class="contacto-cta-wrapper">
+          <a href="https://wa.me/524811098428?text=Hola%2C%20estoy%20listo%20para%20contratar%20OPTINET" 
+             class="contacto-cta" 
+             id="cta-final-wa"
+             target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Contratar por WhatsApp
+          </a>
+        </div>
+        
+        <div class="contacto-info">
+          <div class="info-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            481 109 8428
+          </div>
+          <div class="info-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            Lun - Sáb: 8:00 AM a 6:00 PM
+          </div>
+          <div class="info-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            Ciudad Valles, S.L.P.
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer id="footer">
-    <a href="#" class="footer-logo">OPTINET</a>
-    <p style="color:rgba(255,255,255,0.5)">Fibra Óptica Real en Ciudad Valles, S.L.P.</p>
-    <p class="footer-copy">&copy; 2026 OPTINET. Estabilidad Real y Velocidad Real.</p>
+  <!-- ╔═══════════════════════════════════════════════╗
+       ║  S10 · FOOTER                                  ║
+       ╚═══════════════════════════════════════════════╝ -->
+  <footer id="footer" role="contentinfo">
+    <div class="footer-grid">
+      <!-- Marca y Descripción -->
+      <div class="footer-brand">
+        <a href="#inicio" class="nav-logo" aria-label="OPTINET - Inicio">
+          <div class="nav-logo-icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="wifi-grad-footer" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#6C4FF0"/>
+                  <stop offset="100%" stop-color="#00E5FF"/>
+                </linearGradient>
+              </defs>
+              <circle cx="18" cy="18" r="17" fill="url(#wifi-grad-footer)" opacity="0.12"/>
+              <path d="M6.5 16.2C9.8 12.1 14.6 9.5 18 9.5c3.4 0 8.2 2.6 11.5 6.7" stroke="url(#wifi-grad-footer)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <path d="M10.5 19.8C12.8 17.1 15.3 15.5 18 15.5c2.7 0 5.2 1.6 7.5 4.3" stroke="url(#wifi-grad-footer)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <path d="M14.2 23.3C15.4 21.8 16.7 21 18 21c1.3 0 2.6.8 3.8 2.3" stroke="url(#wifi-grad-footer)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <circle cx="18" cy="27" r="2" fill="url(#wifi-grad-footer)"/>
+            </svg>
+          </div>
+          <div class="nav-logo-divider" aria-hidden="true"></div>
+          <span class="nav-logo-text"><span>OPTI</span>NET</span>
+        </a>
+        <p class="footer-desc">
+          Llevando fibra óptica de verdad a Ciudad Valles, San Luis Potosí. Velocidad simétrica y estabilidad real para tu hogar o negocio.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navegación -->
+      <div>
+        <h4 class="footer-col-title">Navegación</h4>
+        <ul class="footer-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#ventajas">Ventajas</a></li>
+          <li><a href="#planes">Planes y Precios</a></li>
+          <li><a href="#cobertura">Mapa de Cobertura</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <h4 class="footer-col-title">Soporte</h4>
+        <ul class="footer-links">
+          <li><a href="#contacto">Atención a Clientes</a></li>
+          <li><a href="#referidos">Programa de Referidos</a></li>
+          <li><a href="https://wa.me/524811098428" target="_blank" rel="noopener">Chat por WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        &copy; 2026 OPTINET. Todos los derechos reservados.
+      </div>
+      <div class="footer-legal">
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Aviso de Privacidad</a>
+      </div>
+    </div>
   </footer>
 
   <!-- ═══════════════════════════════════════════════════
-       JAVASCRIPT
+       JAVASCRIPT GLOBAL
   ═══════════════════════════════════════════════════ -->
   <script>
-    // --- Navbar & Menu ---
-    const nav = document.getElementById('navbar');
-    const burger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
+    /* ══════════════════════════════════════════════
+       S1 · NAVBAR JS
+       ══════════════════════════════════════════════ */
+    (function () {
+      const navbar   = document.getElementById('navbar');
+      const burger   = document.getElementById('nav-hamburger');
+      const drawer   = document.getElementById('nav-mobile-menu');
+      const mLinks   = document.querySelectorAll('.mobile-link');
 
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
-
-    function closeMenu() {
-      burger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // --- Particles ---
-    const partContainer = document.getElementById('particles');
-    for(let i=0; i<40; i++) {
-      const p = document.createElement('div');
-      p.className = 'particle';
-      const size = Math.random() * 3 + 1;
-      p.style.width = size + 'px';
-      p.style.height = size + 'px';
-      p.style.left = Math.random() * 100 + '%';
-      p.style.bottom = '-10%';
-      p.style.background = i % 2 === 0 ? '#6C4FF0' : '#00E5FF';
-      p.style.animationDuration = (Math.random() * 10 + 5) + 's';
-      p.style.animationDelay = (Math.random() * 5) + 's';
-      partContainer.appendChild(p);
-    }
-
-    // --- Scroll Driven Video (Canvas) ---
-    const video = document.getElementById('heroVideo');
-    const canvas = document.getElementById('heroCanvas');
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
-    const progressFill = document.getElementById('progress');
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    // Chroma Key
-    function drawFrame() {
-      if (video.readyState < 2) return;
-      const vw = video.videoWidth;
-      const vh = video.videoHeight;
-      const scale = Math.max(canvas.width / vw, canvas.height / vh);
-      const dw = vw * scale;
-      const dh = vh * scale;
-      const dx = (canvas.width - dw) / 2;
-      const dy = (canvas.height - dh) / 2;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(video, dx, dy, dw, dh);
-
-      const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const l = frame.data.length;
-      for (let i = 0; i < l; i += 4) {
-        const r = frame.data[i];
-        const g = frame.data[i+1];
-        const b = frame.data[i+2];
-        if (r < 40 && g < 40 && b < 40) frame.data[i+3] = 0; // Remove black background
+      // ── Glassmorphism on scroll ─────────────────
+      function handleScroll() {
+        navbar.classList.toggle('scrolled', window.scrollY > 80);
       }
-      ctx.putImageData(frame, 0, 0);
-    }
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
 
-    const isMobile = window.innerWidth <= 768;
+      // ── Mobile hamburger toggle ─────────────────
+      function toggleMenu(open) {
+        burger.classList.toggle('open', open);
+        drawer.classList.toggle('open', open);
+        burger.setAttribute('aria-expanded', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
 
-    if (isMobile) {
-      // Autoplay on mobile
-      video.autoplay = true; video.loop = true; video.muted = true;
-      video.play();
-      function anim() { drawFrame(); requestAnimationFrame(anim); }
-      video.onplay = anim;
-    } else {
-      // Scroll-driven on Desktop
-      window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        const maxScroll = document.getElementById('inicio').offsetHeight - window.innerHeight;
-        const p = Math.min(Math.max(scrolled / maxScroll, 0), 1);
-        
-        if (video.duration) {
-          video.currentTime = p * video.duration;
-        }
-        progressFill.style.width = (p * 100) + '%';
-        drawFrame();
+      burger.addEventListener('click', () => {
+        const isOpen = drawer.classList.contains('open');
+        toggleMenu(!isOpen);
       });
-    }
 
-    // --- Reveals & Stats ---
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          if (entry.target.classList.contains('stat-card')) {
-            startCounter(entry.target);
+      // Close drawer on link click
+      mLinks.forEach(link => {
+        link.addEventListener('click', () => toggleMenu(false));
+      });
+
+      // Close drawer on Escape key
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') toggleMenu(false);
+      });
+
+      // ── Active link highlighting on scroll ──────
+      const sections = document.querySelectorAll('section[id], header[id]');
+      const navAnchors = document.querySelectorAll('.nav-links-desktop a');
+
+      const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navAnchors.forEach(a => {
+              a.classList.toggle(
+                'active',
+                a.getAttribute('href') === '#' + entry.target.id
+              );
+            });
+          }
+        });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+
+      sections.forEach(s => sectionObserver.observe(s));
+    })();
+
+    /* ══════════════════════════════════════════════
+       S2 · HERO — SCROLL-DRIVEN VIDEO JS
+       ══════════════════════════════════════════════ */
+    (function () {
+
+      // ── Generar partículas CSS ──────────────────────────────────
+      (function spawnParticles() {
+        const container = document.getElementById('heroBgParticles');
+        if (!container) return;
+        const colors = ['#00E5FF','#6C4FF0','#00AAFF'];
+        for (let i = 0; i < 55; i++) {
+          const el = document.createElement('div');
+          el.className = 'particle';
+          const size = Math.random() * 3 + 1;
+          el.style.cssText = [
+            `width:${size}px`, `height:${size}px`,
+            `left:${Math.random()*100}%`,
+            `bottom:${Math.random()*30-10}%`,
+            `background:${colors[Math.floor(Math.random()*colors.length)]}`,
+            `animation-duration:${Math.random()*12+8}s`,
+            `animation-delay:${Math.random()*10}s`,
+            `opacity:0`
+          ].join(';');
+          container.appendChild(el);
+        }
+      })();
+
+      // ── Palabras flotantes sobre el cable ──────────────────────
+      const cableWords = [
+        { text:'VELOCIDAD',     x:'12%', y:'28%', size:'16px', color:'#00E5FF', visibleFrom:0.05, visibleTo:0.25 },
+        { text:'SEGURIDAD',     x:'72%', y:'18%', size:'14px', color:'#6C4FF0', visibleFrom:0.15, visibleTo:0.35 },
+        { text:'ESTABILIDAD',   x:'58%', y:'62%', size:'18px', color:'#00E5FF', visibleFrom:0.25, visibleTo:0.48 },
+        { text:'CONFIANZA',     x:'18%', y:'68%', size:'15px', color:'#6C4FF0', visibleFrom:0.35, visibleTo:0.55 },
+        { text:'FIBRA ÓPTICA',  x:'48%', y:'38%', size:'22px', color:'#fff',    visibleFrom:0.45, visibleTo:0.65 },
+        { text:'SIN CORTES',    x:'78%', y:'52%', size:'14px', color:'#00E5FF', visibleFrom:0.55, visibleTo:0.75 },
+        { text:'ALTA VELOCIDAD',x:'8%',  y:'48%', size:'13px', color:'#6C4FF0', visibleFrom:0.65, visibleTo:0.85 },
+        { text:'TECNOLOGÍA',    x:'42%', y:'72%', size:'16px', color:'#00E5FF', visibleFrom:0.75, visibleTo:0.95 },
+      ];
+
+      const wordsLayer = document.getElementById('cableWordsLayer');
+      const wordEls = [];
+      if (wordsLayer) {
+        cableWords.forEach((w, i) => {
+          const el = document.createElement('div');
+          el.className = 'cable-word';
+          el.textContent = w.text;
+          el.style.cssText = [
+            `left:${w.x}`, `top:${w.y}`,
+            `font-size:${w.size}`,
+            `color:${w.color}`,
+            `text-shadow: 0 0 22px ${w.color}, 0 0 6px ${w.color}`
+          ].join(';');
+          wordsLayer.appendChild(el);
+          wordEls.push(el);
+        });
+      }
+
+      function updateCableWords(p) {
+        cableWords.forEach((w, i) => {
+          const inRange = p >= w.visibleFrom && p <= w.visibleTo;
+          wordEls[i].classList.toggle('visible', inRange);
+        });
+      }
+
+      // ── Canvas + Chroma Key ────────────────────────────────────
+      const video  = document.getElementById('heroVideo');
+      const canvas = document.getElementById('heroCanvas');
+      const hero   = document.getElementById('inicio');
+      const fill   = document.getElementById('progressFill');
+      const noBg   = document.getElementById('heroNoVideoBg');
+
+      if (!video || !canvas || !hero) return;
+
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+      function resizeCanvas() {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      // Parámetros chroma key — ajustables según fondo del video
+      const BG_DARK      = true;  // true = fondo negro | false = fondo blanco
+      const THRESHOLD    = 40;    // tolerancia 0-255
+      const EDGE_FEATHER = 18;    // px de suavizado en bordes
+
+      function removeBackground(imageData) {
+        const d = imageData.data;
+        for (let i = 0; i < d.length; i += 4) {
+          const r = d[i], g = d[i+1], b = d[i+2];
+          let isBg;
+          if (BG_DARK) {
+            isBg = r < THRESHOLD && g < THRESHOLD && b < THRESHOLD;
+          } else {
+            isBg = r > 255-THRESHOLD && g > 255-THRESHOLD && b > 255-THRESHOLD;
+          }
+          if (isBg) {
+            d[i+3] = 0;
+          } else {
+            const dist = BG_DARK ? Math.min(r,g,b) : 255 - Math.max(r,g,b);
+            if (dist < THRESHOLD + EDGE_FEATHER) {
+              const alpha = Math.round(((dist - THRESHOLD) / EDGE_FEATHER) * 255);
+              d[i+3] = Math.max(0, Math.min(255, alpha));
+            }
           }
         }
+        return imageData;
+      }
+
+      function drawFrame() {
+        if (video.readyState < 2) return;
+        const vw = video.videoWidth  || canvas.width;
+        const vh = video.videoHeight || canvas.height;
+        const scale = Math.max(canvas.width / vw, canvas.height / vh);
+        const dw = vw * scale, dh = vh * scale;
+        const dx = (canvas.width - dw) / 2, dy = (canvas.height - dh) / 2;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(video, dx, dy, dw, dh);
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        removeBackground(imgData);
+        ctx.putImageData(imgData, 0, 0);
+      }
+
+      // ── Detección de modo (mobile / reduced motion) ────────────
+      const isMobile       = window.matchMedia('(max-width: 768px)').matches;
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Fallback: mostrar fondo degradado si el video falla
+      video.addEventListener('error', () => {
+        if (noBg) noBg.classList.add('active');
       });
-    }, { threshold: 0.2 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      if (isMobile || prefersReduced) {
+        // Móvil: autoplay loop + chroma key en rAF
+        video.autoplay = true;
+        video.loop     = true;
+        video.muted    = true;
+        video.play().catch(() => { if (noBg) noBg.classList.add('active'); });
+        function mobileDraw() { drawFrame(); requestAnimationFrame(mobileDraw); }
+        video.addEventListener('play', mobileDraw);
+        // Palabras en mobile: ocultar completamente por seguridad
+        if (wordsLayer) wordsLayer.style.display = 'none';
+        return;
+      }
 
-    function startCounter(card) {
-      const numEl = card.querySelector('.stat-number');
-      const target = parseFloat(card.dataset.target);
-      const suffix = card.dataset.suffix || '';
-      let current = 0;
-      const step = target / 50;
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= target) {
-          numEl.innerText = target + suffix;
-          clearInterval(timer);
-        } else {
-          numEl.innerText = Math.floor(current) + suffix;
+      // ── Desktop: scroll-driven ─────────────────────────────────
+      video.pause();
+      video.currentTime = 0;
+      let ready = false;
+
+      video.addEventListener('loadedmetadata', () => { ready = true; drawFrame(); });
+      video.addEventListener('seeked', drawFrame);
+      video.load();
+
+      function update() {
+        if (!ready || !video.duration) return;
+        const rect    = hero.getBoundingClientRect();
+        const scrolled = -rect.top;
+        const max     = hero.offsetHeight - window.innerHeight;
+        let p = scrolled <= 0 ? 0 : scrolled >= max ? 1 : scrolled / max;
+
+        video.currentTime = p * video.duration;
+        if (fill) fill.style.width = (p * 100) + '%';
+        drawFrame();
+        updateCableWords(p);
+      }
+
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => { update(); ticking = false; });
+          ticking = true;
         }
-      }, 30);
-    }
+      }, { passive: true });
 
+      window.addEventListener('resize', () => { resizeCanvas(); update(); });
+
+    })();
+
+    /* ══════════════════════════════════════════════
+       S3 · STATS — CONTADORES ANIMADOS JS
+       ══════════════════════════════════════════════ */
+    (function () {
+
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+      function animateCounter(el, target, prefix, suffix, isDecimal, duration) {
+        const start = performance.now();
+        function step(now) {
+          const elapsed  = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const value    = easeOut(progress) * target;
+          el.textContent = isDecimal
+            ? prefix + (value / 10).toFixed(1) + suffix
+            : prefix + Math.floor(value) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      const cards = document.querySelectorAll('.stat-card');
+      const DURATION = 2000;
+      let triggered = false;
+
+      const statsObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !triggered) {
+            triggered = true;
+
+            cards.forEach(card => {
+              const delay = parseInt(card.dataset.delay || 0);
+              setTimeout(() => card.classList.add('revealed'), delay);
+            });
+
+            const defs = [
+              { id:'stat-clientes', target:300, prefix:'+', suffix:'',     decimal:false, delay:0   },
+              { id:'stat-uptime',   target:999, prefix:'',  suffix:'%',    decimal:true,  delay:150 },
+              { id:'stat-hrs',      target:2,   prefix:'',  suffix:' hrs', decimal:false, delay:300 },
+            ];
+
+            defs.forEach(d => {
+              setTimeout(() => {
+                const el = document.getElementById(d.id);
+                if (el) animateCounter(el, d.target, d.prefix, d.suffix, d.decimal, DURATION);
+              }, d.delay);
+            });
+          }
+        });
+      }, { threshold: 0.3 });
+
+      const statsSection = document.getElementById('stats');
+      if (statsSection) statsObserver.observe(statsSection);
+
+    })();
+
+    /* ══════════════════════════════════════════════
+       S4 · AUDIENCIAS + REVEAL GLOBAL JS
+       ══════════════════════════════════════════════ */
+    (function () {
+      // Reveal global: funciona para .reveal-item en toda la página
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el    = entry.target;
+            const delay = parseInt(el.dataset.delay || 0);
+            setTimeout(() => el.classList.add('revealed'), delay);
+            revealObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.reveal-item').forEach(el => revealObserver.observe(el));
+    })();
+
+    /* ══════════════════════════════════════════════
+       S7 · REFERIDOS JS — Sparkles de confeti
+       ══════════════════════════════════════════════ */
+    (function () {
+      const container = document.getElementById('refSparkles');
+      if (!container) return;
+
+      const colors = [
+        '#6C4FF0','#00E5FF','#00AAFF','#ffffff','#a78bfa'
+      ];
+      const shapes = ['50%', '0%', '30%']; // circle, square, rounded
+
+      for (let i = 0; i < 40; i++) {
+        const el = document.createElement('div');
+        el.className = 'ref-sparkle';
+        const size = Math.random() * 8 + 3;
+        el.style.cssText = [
+          `width:${size}px`,
+          `height:${size}px`,
+          `left:${Math.random() * 100}%`,
+          `bottom:${Math.random() * 20}%`,
+          `background:${colors[Math.floor(Math.random() * colors.length)]}`,
+          `border-radius:${shapes[Math.floor(Math.random() * shapes.length)]}`,
+          `animation-duration:${Math.random() * 8 + 6}s`,
+          `animation-delay:${Math.random() * 8}s`,
+          `opacity:0`
+        ].join(';');
+        container.appendChild(el);
+      }
+
+      // Posicionar el container sobre la seccion referidos
+      const section = document.getElementById('referidos');
+      if (section) {
+        Object.assign(container.style, {
+          position: 'absolute',
+          inset: '0',
+          pointerEvents: 'none',
+          overflow: 'hidden',
+          zIndex: '0'
+        });
+        section.style.position = 'relative';
+      }
+    })();
+
+    // ── Lógica JS global — se irá poblando sección a sección ──
   </script>
+
 </body>
 </html>
